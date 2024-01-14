@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+
+/* Frontend Mentor code */
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+
+.attribution a {
+	color: hsl(228, 45%, 44%);
+}
+/* ----------------------- */
+
+:root {
+	--color-primary: hsl(213, 96%, 18%);
+	--color-secondary: hsl(243, 100%, 62%);
+	--color-pastel-blue: hsl(228, 100%, 84%);
+	--color-light-blue: hsl(206, 94%, 87%);
+	--color-strawberry: hsl(354, 84%, 57%);
+
+	--color-cool-gray: hsl(231, 11%, 63%);
+	--color-light-gray: hsl(229, 24%, 87%);
+	--color-magnolia: hsl(217, 100%, 97%);
+	--color-alabaster: hsl(231, 100%, 99%);
+	--color-white: hsl(0, 0%, 100%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit;
+}
+
+html {
+	box-sizing: border-box;
+	font-size: 62.5%;
+}
+
+body {
+	font-family: "Ubuntu", sans-serif;
+	font-size: 1.6rem;
+	background-color: var(--color-primary);
+}
