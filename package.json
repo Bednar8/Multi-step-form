@@ -1,0 +1,15 @@
+{
+	"name": "multi-step-form-main",
+	"version": "1.0.0",
+	"description": "![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)",
+	"browserslist": "> 0.5%, last 2 versions, not dead",
+	"scripts": {
+		"start": "parcel index.html",
+		"build": "parcel build index.html --dist-dir ./dist"
+	},
+	"author": "Bednar",
+	"license": "ISC",
+	"devDependencies": {
+		"parcel": "^2.11.0"
+	}
+}
