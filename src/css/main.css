@@ -201,12 +201,13 @@ body {
 
 .plan__item--description {
 	margin-left: 1.5rem;
+	font-size: 1.2rem;
 }
 
 .plan__item--title {
 	margin-bottom: 0.5rem;
 	color: var(--color-primary);
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 }
 
 /* switch */
@@ -258,4 +259,53 @@ body {
 
 .plan__switch input:checked + .plan__switch--slider::before {
 	transform: translateX(2rem);
+}
+
+/* Step third */
+
+.add-ons--price {
+	margin-left: auto;
+	color: var(--color-secondary);
+	font-size: 1.3rem;
+}
+
+.add-ons--label {
+	position: relative;
+	width: 2rem;
+	height: 2rem;
+}
+
+.add-ons--label input {
+	display: none;
+}
+
+.add-ons--span {
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid var(--color-cool-gray);
+	border-radius: 3px;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.add-ons--span::before {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	content: url(/assets/images/icon-checkmark.svg);
+	width: 2rem;
+	height: 2rem;
+	border-radius: 3px;
+	background-color: var(--color-secondary);
+	border: none;
+}
+
+.plan__item input:checked + .add-ons--span::before {
+	display: none;
 }
