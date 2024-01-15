@@ -30,9 +30,10 @@
     </nav>
 
     <main class="form__container">
-      <div class="form__container--box">
-        <h2 class="form--title">Personal info</h2>
-        <p class="form--description">Please provide your name, email address,
+      <!-- STEP FIRST -->
+      <!-- <div class="step__container--box">
+        <h2 class="step--title">Personal info</h2>
+        <p class="step--description">Please provide your name, email address,
           and phone number.</p>
 
         <form class="form">
@@ -59,15 +60,100 @@
             </div>
             <input id="phone" type="text" placeholder="e.g. +1 234 567 890"
               required>
+          </div> 
+        </form>-->
+
+      <!-- STEP SECOND -->
+      <!-- <div class="step__container--box">
+        <h2 class="step--title">Select your plan</h2>
+        <p class="step--description">You have the option of monthly or yearly
+          billing.</p>
+
+        <div class="plan__box">
+          <div class="plan__item plan__item-active">
+            <img src="./assets/images/icon-arcade.svg" alt="">
+            <div class="plan__item--description">
+              <h3 class="plan__item--title">Arcade</h3>
+              <p class="plan__item--price">$9/mo</p>
+            </div>
           </div>
 
-        </form>
+          <div class="plan__item">
+            <img src="./assets/images/icon-advanced.svg" alt="">
+            <div class="plan__item--description">
+              <h3 class="plan__item--title">Advanced</h3>
+              <p class="plan__item--price">$12/mo</p>
+            </div>
+          </div>
+
+          <div class="plan__item">
+            <img src="./assets/images/icon-pro.svg" alt="">
+            <div class="plan__item--description">
+              <h3 class="plan__item--title">Pro</h3>
+              <p class="plan__item--price">$15/mo</p>
+            </div>
+          </div>
+
+          <div class="plan__switch">
+            <p class="plan__switch--monthly">Monthly</p>
+            <label class="switch" for="switch">
+              <input type="checkbox" name="switch" id="switch">
+              <span class="plan__switch--slider"></span>
+            </label>
+            <p class="plan__switch-yearly">Yearly</p>
+          </div>
+        </div>
+
+      </div> -->
+
+      <!-- STEP THIRD -->
+      <div class="step__container--box">
+        <h2 class="step--title">Select your plan</h2>
+        <p class="step--description">You have the option of monthly or yearly
+          billing.</p>
+
+        <div class="plan__box">
+          <div class="plan__item plan__item-active">
+            <img src="./assets/images/icon-arcade.svg" alt="">
+            <div class="plan__item--description">
+              <h3 class="plan__item--title">Arcade</h3>
+              <p class="plan__item--price">$9/mo</p>
+            </div>
+          </div>
+
+          <div class="plan__item">
+            <img src="./assets/images/icon-advanced.svg" alt="">
+            <div class="plan__item--description">
+              <h3 class="plan__item--title">Advanced</h3>
+              <p class="plan__item--price">$12/mo</p>
+            </div>
+          </div>
+
+          <div class="plan__item">
+            <img src="./assets/images/icon-pro.svg" alt="">
+            <div class="plan__item--description">
+              <h3 class="plan__item--title">Pro</h3>
+              <p class="plan__item--price">$15/mo</p>
+            </div>
+          </div>
+
+          <div class="plan__switch">
+            <p class="plan__switch--monthly">Monthly</p>
+            <label class="switch" for="switch">
+              <input type="checkbox" name="switch" id="switch">
+              <span class="plan__switch--slider"></span>
+            </label>
+            <p class="plan__switch-yearly">Yearly</p>
+          </div>
+        </div>
+
       </div>
+
     </main>
 
     <div class="btns__container">
-      <button class="btn--back">Go Back</button>
-      <button class="btn--next">Next Step</button>
+      <button class="btn-steps btn--back ">Go Back</button>
+      <button class="btn-steps btn--next">Next Step</button>
     </div>
   </div>
 

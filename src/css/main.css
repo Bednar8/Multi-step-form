@@ -47,13 +47,49 @@ body {
 	font-size: 1.6rem;
 }
 
+/* Buttons */
+
+.btns__container {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	padding: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--color-white);
+}
+
+.btn-steps {
+	border: none;
+	font-size: 1.6rem;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.btn--next {
+	padding: 1.3rem 1.8rem;
+	color: var(--color-white);
+	background-color: var(--color-primary);
+	border-radius: 5px;
+}
+
+.btn--back {
+	color: var(--color-cool-gray);
+	background-color: var(--color-white);
+}
+
+/* base classes */
+
+.hidden {
+	display: none;
+}
+
 .container {
 	height: 100%;
 	background-color: var(--color-magnolia);
 }
 
 .nav__mobile {
-	position: relative;
 	height: 30%;
 	display: flex;
 	justify-content: center;
@@ -69,7 +105,7 @@ body {
 	list-style: none;
 }
 
-.nav__mobile--item {
+.nav__mobile--item a {
 	width: 4rem;
 	height: 4rem;
 	margin: 4rem 1rem;
@@ -78,42 +114,48 @@ body {
 	align-items: center;
 	border-radius: 50%;
 	border: 1px solid var(--color-white);
-}
-
-.nav__mobile--item a {
 	text-decoration: none;
 	color: var(--color-white);
 }
 
-/* form */
+.nav__mobile--item-active a {
+	background-color: var(--color-pastel-blue);
+	color: var(--color-primary);
+	border: none;
+}
 
-.form__container--box {
-	position: absolute;
-	top: 12rem;
-	margin: 0 2rem;
+.step__container--box {
+	max-width: 90%;
+	margin: 0 auto;
+	margin-top: -9rem;
 	padding: 3.5rem 2.5rem;
 	background-color: var(--color-white);
 	border-radius: 8px;
 	box-shadow: 0px 5px 20px -10px var(--color-cool-gray);
 }
 
-.form--title {
+.step--title {
 	color: var(--color-primary);
 	font-size: 2.6rem;
 	font-weight: 700;
 }
 
-.form--description {
+.step--description {
 	margin: 1rem 0;
 	line-height: 2.4rem;
 	color: var(--color-cool-gray);
 	font-weight: 500;
 }
 
+/* Step first */
 .form--item {
 	display: flex;
 	flex-direction: column;
-	margin: 2rem 0;
+	margin: 1.5rem 0;
+}
+
+.form--item:last-child {
+	margin-bottom: 0;
 }
 
 .form--item input {
@@ -138,10 +180,82 @@ body {
 	color: var(--color-primary);
 }
 
-/* Buttons */
+/* Step second */
+.plan__box {
+	margin-top: 1.5rem;
+}
+.plan__item {
+	display: flex;
+	align-items: center;
+	margin: 1rem 0;
+	padding: 1.5rem;
+	border: 1px solid var(--color-light-gray);
+	border-radius: 8px;
+	color: var(--color-cool-gray);
+}
 
-.btns__container {
+.plan__item-active {
+	border: 1px solid var(--color-secondary);
+	background-color: var(--color-magnolia);
+}
+
+.plan__item--description {
+	margin-left: 1.5rem;
+}
+
+.plan__item--title {
+	margin-bottom: 0.5rem;
+	color: var(--color-primary);
+	font-size: 1.8rem;
+}
+
+/* switch */
+.plan__switch {
+	margin: 0 auto;
+	margin-top: 2.5rem;
+	padding: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--color-magnolia);
+	color: var(--color-cool-gray);
+	border-radius: 8px;
+}
+.switch {
+	position: relative;
+	width: 4rem;
+	height: 2rem;
+	margin: 0 2rem;
+}
+
+.plan__switch--slider {
 	position: absolute;
-	bottom: 2rem;
-	right: 2rem;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background-color: var(--color-primary);
+	border-radius: 34px;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+.plan__switch input {
+	display: none;
+}
+
+.plan__switch--slider::before {
+	content: "";
+	position: absolute;
+	height: 1.4rem;
+	width: 1.4rem;
+	left: 0.3rem;
+	bottom: 0.3rem;
+	background-color: var(--color-white);
+	border-radius: 50%;
+	transition: 0.3s;
+}
+
+.plan__switch input:checked + .plan__switch--slider::before {
+	transform: translateX(2rem);
 }
