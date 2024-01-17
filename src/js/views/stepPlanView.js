@@ -1,26 +1,7 @@
-class View {
-	_parentEl = document.querySelector(".step__container--box")
-	_btnNext = document.querySelectorAll(".btn--next")
-
-	addHandlerClick() {
-		this._btnNext.forEach((btn) =>
-			btn.addEventListener("click", () => {
-				this.render.bind(this)
-			})
-		)
-	}
-
-	render() {
-		this._clear()
-		this._parentEl.insertAdjacentHTML("afterbegin", this._generateMarkup)
-	}
-
-	_clear() {
-		this._parentEl.innerHTML = ""
-	}
-
-	_generateMarkup() {
-		return `<h2 class="step--title">Select your plan</h2>
+export const stepPlanMarkup = function () {
+	return `
+  <div class="step__container--box" data-step="2">
+        <h2 class="step--title">Select your plan</h2>
         <p class="step--description">You have the option of monthly or yearly
           billing.</p>
 
@@ -64,8 +45,6 @@ class View {
           <button class="btn-steps btn--next">Next Step</button>
         </div>
 
-      </div>`
-	}
+      </div>
+  `
 }
-
-export default new View()

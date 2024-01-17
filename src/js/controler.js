@@ -1,8 +1,10 @@
-import {state} from "./model.js"
-import view from "./view.js"
+import * as model from "./model.js"
+import {generateStepPlanMarkup} from "./views/stepPlanView.js"
+
+const controlSteps = function (currentStep) {}
 
 const init = function () {
-	view.addHandlerClick()
+	// stepPlanView.addHandlerClick(controlSteps)
 }
 
 init()
