@@ -1,9 +1,3 @@
-import {stepInfoMarkup} from "./views/stepInfoView"
-import {stepPlanMarkup} from "./views/stepPlanView"
-import {stepAddOnsMarkup} from "./views/stepAddOnsView"
-import {stepSummaryMarkup} from "./views/stepSummaryView"
-import {stepThanksMarkup} from "./views/stepThanksView"
-
 export const state = {
 	currentPlan: {
 		plan: "",
@@ -12,13 +6,12 @@ export const state = {
 	currentStep: 1,
 }
 
-const stepInfo = {
+export const stepInfo = {
 	step: 1,
 	correctForm: false,
-	markup: stepInfoMarkup,
 }
 
-const stepPlan = {
+export const stepPlan = {
 	step: 2,
 	arcade: {
 		monthly: 9,
@@ -32,10 +25,9 @@ const stepPlan = {
 		monthly: 15,
 		yearly: 150,
 	},
-	markup: stepPlanMarkup,
 }
 
-const stepAddOns = {
+export const stepAddOns = {
 	step: 3,
 	onlineServica: {
 		monthly: 1,
@@ -49,15 +41,12 @@ const stepAddOns = {
 		monthly: 2,
 		yearly: 20,
 	},
-	markup: stepAddOnsMarkup,
 }
 
-const summary = {
+export const summary = {
 	step: 4,
-	markup: stepSummaryMarkup,
 }
 
-const stepThanks = {
+export const stepThanks = {
 	step: 5,
-	markup: stepThanksMarkup,
 }

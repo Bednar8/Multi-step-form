@@ -1,5 +1,32 @@
-export const stepInfoMarkup = function () {
-	return `
+class StepInfoView {
+	_parentEl = document.querySelector(".step__container")
+	_data
+
+	// Add handler on click (mobile and desktop)
+	addHandlerClick(handler) {
+		this._parentEl.addEventListener("click", function (e) {
+			const btnsNext = document.querySelectorAll(".btn--next")
+			btnsNext.forEach((btn) => {
+				if (e.target !== btn) return
+				handler()
+			})
+		})
+	}
+
+	// Render markup current step
+	render(data) {
+		this._data = data
+		const markup = this._generateMarkup()
+		this._clear()
+		this._parentEl.insertAdjacentHTML("afterbegin", markup)
+	}
+
+	_clear() {
+		this._parentEl.innerHTML = ""
+	}
+
+	_generateMarkup() {
+		return `
     <div class="step__container--box" data-step="1">
         <h2 class="step--title">Personal info</h2>
         <p class="step--description">Please provide your name, email address,
@@ -36,4 +63,7 @@ export const stepInfoMarkup = function () {
         </div>
       </div>
     `
+	}
 }
+
+export default new StepInfoView()
