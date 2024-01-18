@@ -1,30 +1,5 @@
-class StepInfoView {
-	_parentEl = document.querySelector(".step__container")
-	_data
-
-	// Add handler on click (mobile and desktop)
-	addHandlerClick(handler) {
-		this._parentEl.addEventListener("click", function (e) {
-			const btnsNext = document.querySelectorAll(".btn--next")
-			btnsNext.forEach((btn) => {
-				if (e.target !== btn) return
-				handler()
-			})
-		})
-	}
-
-	// Render markup current step
-	render(data) {
-		this._data = data
-		const markup = this._generateMarkup()
-		this._clear()
-		this._parentEl.insertAdjacentHTML("afterbegin", markup)
-	}
-
-	_clear() {
-		this._parentEl.innerHTML = ""
-	}
-
+import View from "./View"
+class StepInfoView extends View {
 	_generateMarkup() {
 		return `
     <div class="step__container--box" data-step="1">
@@ -57,8 +32,7 @@ class StepInfoView {
               placeholder="e.g. +1 234 567 890" required>
           </div>
         </form>
-        <div class=".btns__container btns__container--desktop">
-          <button class="btn-steps btn--back ">Go Back</button>
+        <div class="btns__container btns__container--desktop">
           <button class="btn-steps btn--next">Next Step</button>
         </div>
       </div>

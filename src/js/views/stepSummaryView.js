@@ -1,30 +1,5 @@
-class StepSummaryView {
-	_parentEl = document.querySelector(".step__container")
-	_data
-
-	// Add handler on click (mobile and desktop)
-	addHandlerClick(handler) {
-		this._parentEl.addEventListener("click", function (e) {
-			const btnsNext = document.querySelectorAll(".btn--next")
-			btnsNext.forEach((btn) => {
-				if (e.target !== btn) return
-				handler()
-			})
-		})
-	}
-
-	// Render markup current step
-	render(data) {
-		this._data = data
-		const markup = this._generateMarkup()
-		this._clear()
-		this._parentEl.insertAdjacentHTML("afterbegin", markup)
-	}
-
-	_clear() {
-		this._parentEl.innerHTML = ""
-	}
-
+import View from "./View"
+class StepSummaryView extends View {
 	_generateMarkup() {
 		return `
     <div class="step__container--box" data-step="4">
@@ -57,9 +32,9 @@ class StepSummaryView {
         <p>Total <span class="summary__total--time">(per month)</span></p>
         <p class="summary__total--price">+$12/mo</p>
       </div>
-      <div class=".btns__container btns__container--desktop">
+      <div class="btns__container">
         <button class="btn-steps btn--back ">Go Back</button>
-        <button class="btn-steps btn--next">Next Step</button>
+        <button class="btn-steps btn--next btn--confirm">Confirm</button>
       </div>
     </div>
 

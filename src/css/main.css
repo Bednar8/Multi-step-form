@@ -51,11 +51,7 @@ body {
 }
 
 /* Buttons */
-.btns__container--desktop {
-	display: none;
-}
-
-.btns__container--mobile {
+.btns__container {
 	position: fixed;
 	bottom: 0;
 	left: 0;
@@ -67,6 +63,31 @@ body {
 	box-shadow: 0px -5px 10px var(--color-alabaster);
 }
 
+/* .btns__container--desktop {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 1.5rem;
+	display: flex;
+	/* justify-content: space-between; */
+/* background-color: var(--color-white);
+	box-shadow: 0px -5px 10px var(--color-alabaster);
+} */
+/* */
+
+/* .btns__container--mobile {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	background-color: var(--color-white);
+	box-shadow: 0px -5px 10px var(--color-alabaster);
+} */
+
 .btn-steps {
 	border: none;
 	font-size: 1.4rem;
@@ -76,6 +97,7 @@ body {
 
 .btn--next {
 	padding: 1.3rem 1.8rem;
+	width: 10rem;
 	color: var(--color-white);
 	background-color: var(--color-primary);
 	border-radius: 5px;
@@ -94,6 +116,14 @@ body {
 
 .btn--back:hover {
 	color: var(--color-primary);
+}
+
+.btn--next.btn--confirm {
+	background-color: var(--color-secondary);
+}
+
+.btn--next.btn--confirm:hover {
+	background-color: var(--color-primary);
 }
 
 /* base classes */
@@ -189,7 +219,7 @@ body {
 	font-weight: 500;
 }
 
-/* Step first */
+/* Step info */
 .form--item {
 	display: flex;
 	flex-direction: column;
@@ -237,7 +267,7 @@ body {
 	color: var(--color-primary);
 }
 
-/* Step second */
+/* Step plan */
 .plan__box {
 	margin-top: 1.5rem;
 }
@@ -285,6 +315,7 @@ body {
 	background-color: var(--color-magnolia);
 	color: var(--color-cool-gray);
 	border-radius: 8px;
+	font-weight: 700;
 }
 .switch {
 	position: relative;
@@ -325,6 +356,10 @@ body {
 	transform: translateX(2rem);
 }
 
+.plan__switch--active {
+	color: var(--color-primary);
+}
+
 /* Step third */
 
 .add-ons--price {
@@ -362,7 +397,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	content: url(/assets/images/icon-checkmark.svg);
+	content: url("/src/assets/images/icon-checkmark.svg");
 	width: 2rem;
 	height: 2rem;
 	border-radius: 3px;
@@ -390,6 +425,10 @@ body {
 	font-weight: 700;
 	color: var(--color-primary);
 	border-bottom: 1px solid var(--color-light-gray);
+}
+
+.summary__plan--price {
+	font-size: 1.7rem;
 }
 
 .summary__plan--description a {
@@ -425,6 +464,7 @@ body {
 
 .summary__total--price {
 	color: var(--color-secondary);
+	font-size: 1.8rem;
 	font-weight: 700;
 }
 
@@ -506,7 +546,7 @@ body {
 	.nav__desktop {
 		display: flex;
 		padding: 2rem 3rem;
-		background-image: url("/assets/images/bg-sidebar-desktop.svg");
+		background-image: url("/src/assets/images/bg-sidebar-desktop.svg");
 		background-size: cover;
 		background-position: center;
 		width: 30%;
@@ -604,7 +644,7 @@ body {
 	}
 	/* Buttons */
 
-	.btns__container--desktop {
+	.btns__container {
 		position: absolute;
 		bottom: 1rem;
 		left: 0;
@@ -612,9 +652,5 @@ body {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-	}
-
-	.btns__container--mobile {
-		display: none;
 	}
 }

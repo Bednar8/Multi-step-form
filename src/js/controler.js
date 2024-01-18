@@ -1,4 +1,5 @@
 import * as model from "./model.js"
+import {view} from "./views/View.js"
 import stepInfoView from "./views/stepInfoView.js"
 import stepPlanView from "./views/stepPlanView.js"
 import stepAddOnsView from "./views/stepAddOnsView.js"
@@ -16,47 +17,45 @@ const controlSteps = function () {
 		case model.stepAddOns.step:
 			controlStepAddOns()
 			break
-		case model.summary.step:
+		case model.stepSummary.step:
 			controlSummary()
 			break
 		case model.stepThanks.step:
 			controlStepThanks()
 			break
 	}
+	// Control buttons to not display go back button when user is on info step
+	view.controlButtons(model.state.currentStep, model.stepInfo.step)
 }
 
 const controlStepInfo = function () {
 	const data = model.stepInfo
-	console.log(data)
 	stepInfoView.render()
 }
 
 const controlStepPlan = function () {
-	const data = model.stepInfo
-	console.log(data)
+	const data = model.stepPlan
 	stepPlanView.render()
 }
 
 const controlStepAddOns = function () {
-	const data = model.stepInfo
-	console.log(data)
+	const data = model.stepAddOns
 	stepAddOnsView.render()
 }
 
 const controlSummary = function () {
-	const data = model.stepInfo
-	console.log(data)
+	const data = model.stepSummary
 	stepSummaryView.render()
 }
 
 const controlStepThanks = function () {
 	const data = model.stepInfo
-	console.log(data)
 	stepThanksView.render()
 }
 
 const init = function () {
-	stepInfoView.addHandlerClick(controlSteps)
+	view.controlButtons(model.state.currentStep, model.stepInfo.step)
+	view.addHandlerClick(controlSteps)
 }
 
 init()

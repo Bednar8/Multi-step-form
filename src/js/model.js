@@ -34,8 +34,8 @@ export const stepAddOns = {
 		yearly: 10,
 	},
 	largerStorage: {
-		monthly: 1,
-		yearly: 10,
+		monthly: 2,
+		yearly: 20,
 	},
 	customizableProfile: {
 		monthly: 2,
@@ -43,7 +43,7 @@ export const stepAddOns = {
 	},
 }
 
-export const summary = {
+export const stepSummary = {
 	step: 4,
 }
 

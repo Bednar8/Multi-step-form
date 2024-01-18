@@ -1,30 +1,8 @@
-class StepPlanView {
-	_parentEl = document.querySelector(".step__container")
-	_data
-
-	// Add handler on click (mobile and desktop)
-	addHandlerClick(handler) {
-		this._parentEl.addEventListener("click", function (e) {
-			const btnsNext = document.querySelectorAll(".btn--next")
-			btnsNext.forEach((btn) => {
-				if (e.target !== btn) return
-				handler()
-			})
-		})
-	}
-
-	// Render markup current step
-	render(data) {
-		this._data = data
-		const markup = this._generateMarkup()
-		this._clear()
-		this._parentEl.insertAdjacentHTML("afterbegin", markup)
-	}
-
-	_clear() {
-		this._parentEl.innerHTML = ""
-	}
-
+import View from "./View"
+import iconArcade from "../../assets/images/icon-arcade.svg"
+import iconAdvanced from "../../assets/images/icon-advanced.svg"
+import iconPro from "../../assets/images/icon-pro.svg"
+class StepPlanView extends View {
 	_generateMarkup() {
 		return `
     <div class="step__container--box" data-step="2">
@@ -33,32 +11,33 @@ class StepPlanView {
       billing.</p>
 
     <div class="plan__box">
-      <div class="plan__box--desktop">
-        <div class="plan__item plan__item-active">
-          <img src="./assets/images/icon-arcade.svg" alt="">
-          <div class="plan__item--description">
-            <h3 class="plan__item--title">Arcade</h3>
-            <p class="plan__item--price">$9/mo</p>
-          </div>
-        </div>
-        <div class="plan__item">
-          <img src="./assets/images/icon-advanced.svg" alt="">
-          <div class="plan__item--description">
-            <h3 class="plan__item--title">Advanced</h3>
-            <p class="plan__item--price">$12/mo</p>
-          </div>
-        </div>
-        <div class="plan__item">
-          <img src="./assets/images/icon-pro.svg" alt="">
-          <div class="plan__item--description">
-            <h3 class="plan__item--title">Pro</h3>
-            <p class="plan__item--price">$15/mo</p>
-          </div>
-        </div>
+    <div class="plan__box--desktop">
+    <div class="plan__item">
+      
+      <img src="${iconArcade}" alt="">
+      <div class="plan__item--description">
+        <h3 class="plan__item--title">Arcade</h3>
+        <p class="plan__item--price">$9/mo</p>
       </div>
+    </div>
+    <div class="plan__item">
+      <img src="${iconAdvanced}" alt="">
+      <div class="plan__item--description">
+        <h3 class="plan__item--title">Advanced</h3>
+        <p class="plan__item--price">$12/mo</p>
+      </div>
+    </div>
+    <div class="plan__item">
+      <img src="${iconPro}" alt="">
+      <div class="plan__item--description">
+        <h3 class="plan__item--title">Pro</h3>
+        <p class="plan__item--price">$15/mo</p>
+      </div>
+    </div>
+  </div>
 
       <div class="plan__switch">
-        <p class="plan__switch--monthly">Monthly</p>
+        <p class="plan__switch--monthly plan__switch--active">Monthly</p>
         <label class="switch" for="switch">
           <input type="checkbox" name="switch" id="switch">
           <span class="plan__switch--slider"></span>
@@ -67,7 +46,7 @@ class StepPlanView {
       </div>
     </div>
 
-    <div class=".btns__container btns__container--desktop">
+    <div class="btns__container">
       <button class="btn-steps btn--back ">Go Back</button>
       <button class="btn-steps btn--next">Next Step</button>
     </div>

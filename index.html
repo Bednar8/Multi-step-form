@@ -7,7 +7,7 @@
   <!-- displays site properly based on user's device -->
 
   <link rel="icon" type="image/png" sizes="32x32"
-    href="./assets/images/favicon-32x32.png">
+    href="./src/assets/images/favicon-32x32.png">
 
   <title>Frontend Mentor | Multi-step form</title>
   <link rel="stylesheet" href="./src/css/main.css">
@@ -17,8 +17,8 @@
 <body>
 
   <!-- Sidebar/nav start -->
-  <div class="bg-decoration"><img src="./assets/images/bg-sidebar-mobile.svg"
-      alt=""></div>
+  <div class="bg-decoration"><img
+      src="./src/assets/images/bg-sidebar-mobile.svg" alt=""></div>
   <div class="container">
 
     <nav class="nav__mobile">
@@ -99,14 +99,14 @@
           <div class="form--item">
             <div class="form--label">
               <label for="phone">Phone Number</label>
-              <p class="form--item-error">This field is required</p>
+              <p class="form--item-error"></p>
             </div>
-            <input class="form--input form--input-error" id="phone" type="text"
+            <input class="form--input" id="phone" type="text"
               placeholder="e.g. +1 234 567 890" required>
           </div>
         </form>
-        <div class=".btns__container btns__container--desktop">
-          <button class="btn-steps btn--back ">Go Back</button>
+        <div class="btns__container btns__step--info">
+          <button class="btn-steps btn--back">Go Back</button>
           <button class="btn-steps btn--next">Next Step</button>
         </div>
       </div>
@@ -275,10 +275,10 @@
     </main>
 
 
-    <div class=".btns__container btns__container--mobile">
+    <!-- <div class=".btns__container btns__container--mobile">
       <button class="btn-steps btn--back ">Go Back</button>
       <button class="btn-steps btn--next">Next Step</button>
-    </div>
+    </div> -->
   </div>
   <!-- Footer -->
 
