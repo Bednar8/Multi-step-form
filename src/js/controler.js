@@ -17,19 +17,19 @@ const controlNextSteps = function () {
   model.state.currentStep++;
   switch (model.state.currentStep) {
     case model.stepInfo.step:
-      controlStepInfo();
+      stepInfoView.render();
       break;
     case model.stepPlan.step:
-      controlStepPlan();
+      stepPlanView.render();
       break;
     case model.stepAddOns.step:
-      controlStepAddOns();
+      stepAddOnsView.render();
       break;
     case model.stepSummary.step:
-      controlSummary();
+      stepSummaryView.render();
       break;
     case model.stepThanks.step:
-      controlStepThanks();
+      stepThanksView.render();
       break;
   }
 
@@ -44,19 +44,19 @@ const controlBackSteps = function () {
   model.state.currentStep--;
   switch (model.state.currentStep) {
     case model.stepInfo.step:
-      controlStepInfo();
+      stepInfoView.render();
       break;
     case model.stepPlan.step:
-      controlStepPlan();
+      stepPlanView.render();
       break;
     case model.stepAddOns.step:
-      controlStepAddOns();
+      stepAddOnsView.render();
       break;
     case model.stepSummary.step:
-      controlSummary();
+      stepSummaryView.render();
       break;
     case model.stepThanks.step:
-      controlStepThanks();
+      stepThanksView.render();
       break;
   }
 
@@ -66,29 +66,8 @@ const controlBackSteps = function () {
   navView.addActiveNavItem(model.state.currentStep);
 };
 
-const controlStepInfo = function () {
-  const data = model.stepInfo;
-  stepInfoView.render();
-};
-
-const controlStepPlan = function () {
-  const data = model.stepPlan;
-  stepPlanView.render();
-};
-
-const controlStepAddOns = function () {
-  const data = model.stepAddOns;
-  stepAddOnsView.render();
-};
-
-const controlSummary = function () {
-  const data = model.stepSummary;
-  stepSummaryView.render();
-};
-
-const controlStepThanks = function () {
-  const data = model.stepInfo;
-  stepThanksView.render();
+const controlPlan = function () {
+  stepPlanView.getPlanOption();
 };
 
 const init = function () {
@@ -96,6 +75,7 @@ const init = function () {
   view.addHandlerClickNextStep(controlNextSteps);
   view.addHandlerClickBackStep(controlBackSteps);
   navView.addActiveNavItem(model.state.currentStep);
+  stepPlanView.addHandlerChoosePlan(controlPlan);
 };
 
 init();
