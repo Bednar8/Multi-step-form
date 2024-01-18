@@ -3,10 +3,17 @@ export default class View {
 	_stepContainer = document.querySelector(".step__container")
 	_data
 
-	// Add handler on click (mobile and desktop)
-	addHandlerClick(handler) {
+	// Add handler on click to next step
+	addHandlerClickNextStep(handler) {
 		this._parentEl.addEventListener("click", function (e) {
 			const btnNext = document.querySelector(".btn--next")
+			if (e.target !== btnNext) return
+			handler()
+		})
+	}
+	addHandlerClickBackStep(handler) {
+		this._parentEl.addEventListener("click", function (e) {
+			const btnNext = document.querySelector(".btn--back")
 			if (e.target !== btnNext) return
 			handler()
 		})
