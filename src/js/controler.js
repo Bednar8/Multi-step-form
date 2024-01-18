@@ -5,6 +5,7 @@ import stepPlanView from "./views/stepPlanView.js"
 import stepAddOnsView from "./views/stepAddOnsView.js"
 import stepSummaryView from "./views/stepSummaryView.js"
 import stepThanksView from "./views/stepThanksView.js"
+import navView from "./views/navView.js"
 
 const controlSteps = function () {
 	switch (model.state.currentStep) {
@@ -26,6 +27,8 @@ const controlSteps = function () {
 	}
 	// Control buttons to not display go back button when user is on info step
 	view.controlButtons(model.state.currentStep, model.stepInfo.step)
+	// control nav item -> add active class to current step
+	navView.addActiveNavItem(model.state.currentStep)
 }
 
 const controlStepInfo = function () {
@@ -56,6 +59,7 @@ const controlStepThanks = function () {
 const init = function () {
 	view.controlButtons(model.state.currentStep, model.stepInfo.step)
 	view.addHandlerClick(controlSteps)
+	navView.addActiveNavItem(model.state.currentStep)
 }
 
 init()

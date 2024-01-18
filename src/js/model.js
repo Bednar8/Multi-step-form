@@ -3,7 +3,7 @@ export const state = {
 		plan: "",
 		addOns: [],
 	},
-	currentStep: 5,
+	currentStep: 2,
 }
 
 export const stepInfo = {
