@@ -13,7 +13,7 @@ const switchCurrentStep = function () {
       stepInfoView.render();
       break;
     case model.stepPlan.step:
-      stepPlanView.render();
+      stepPlanView.render(model.state);
       break;
     case model.stepAddOns.step:
       stepAddOnsView.render();
@@ -53,17 +53,23 @@ const controlBackSteps = function () {
   navView.addActiveNavItem(model.state.currentStep);
 };
 
+// Control plan and add current plan to state
 const controlPlan = function () {
   const currentPlanKey = stepPlanView.getPlanOption();
+  console.log(currentPlanKey);
   if (!currentPlanKey) return;
-  model.state.allPlan = model.stepPlan;
-  model.state.currentPlan.plan = model.stepPlan[currentPlanKey];
-  console.log(model.state);
+  // model.state.allPlan = model.stepPlan;
+  model.state.currentPlan.name = currentPlanKey;
 };
 
+// Control time and add current time to state
 const controlTime = function () {
   const currentTimeName = stepPlanView.getPlanTime();
-  console.log(currentTimeName);
+
+  model.state.currentTime.name = currentTimeName;
+  // model.state.currentTime.value = model.state.currentPlan.name[currentTimeName];
+  console.log(model.state.currentTime);
+  stepPlanView.render(model.state);
 };
 
 const init = function () {

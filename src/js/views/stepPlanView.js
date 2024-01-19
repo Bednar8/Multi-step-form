@@ -59,6 +59,7 @@ class StepPlanView extends View {
   }
 
   _generateMarkup() {
+    console.log(this._data);
     return `
     <div class="step__container--box" data-step="2">
     <h2 class="step--title">Select your plan</h2>
@@ -71,21 +72,33 @@ class StepPlanView extends View {
       <img src="${iconArcade}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Arcade</h3>
-        <p class="plan__item--price">$9/mo</p>
+        <p class="plan__item--price">$${
+          this._data.currentTime.name === 'monthly'
+            ? `${this._data.allPlan.arcade.monthly}/mo`
+            : `${this._data.allPlan.arcade.yearly}/yr`
+        }</p>
       </div>
     </div>
     <div class="plan__item" data-plan="advanced">
       <img src="${iconAdvanced}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Advanced</h3>
-        <p class="plan__item--price">$12/mo</p>
+        <p class="plan__item--price">$${
+          this._data.currentTime.name === 'monthly'
+            ? `${this._data.allPlan.advanced.monthly}/mo`
+            : `${this._data.allPlan.advanced.yearly}/yr`
+        }</p>
       </div>
     </div>
     <div class="plan__item" data-plan="pro">
       <img src="${iconPro}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Pro</h3>
-        <p class="plan__item--price">$15/mo</p>
+        <p class="plan__item--price">$${
+          this._data.currentTime.name === 'monthly'
+            ? `${this._data.allPlan.pro.monthly}/mo`
+            : `${this._data.allPlan.pro.yearly}/yr`
+        }</p>
       </div>
     </div>
   </div>
@@ -93,7 +106,9 @@ class StepPlanView extends View {
       <div class="plan__switch">
         <p class="plan__switch--monthly plan__switch--active plan__switch--time" data-time="monthly">Monthly</p>
         <label class="switch" for="switch">
-          <input type="checkbox" name="switch" id="switch">
+          <input type="checkbox" name="switch" id="switch" ${
+            this._data.currentTime.name === 'monthly' ? '' : 'checked'
+          }>
           <span class="plan__switch--slider"></span>
         </label>
         <p class="plan__switch-yearly plan__switch--time" data-time="yearly">Yearly</p>

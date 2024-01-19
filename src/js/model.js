@@ -1,12 +1,28 @@
 export const state = {
   currentPlan: {
-    plan: '',
+    name: '',
     addOns: [],
   },
-  allPlan: {},
+  allPlan: {
+    arcade: {
+      monthly: 9,
+      yearly: 90,
+    },
+    advanced: {
+      monthly: 12,
+      yearly: 120,
+    },
+    pro: {
+      monthly: 15,
+      yearly: 150,
+    },
+  },
   currentStep: 1,
   correctForm: false,
-  currentTime: '',
+  currentTime: {
+    name: 'monthly',
+    value: '',
+  },
 };
 
 export const stepInfo = {
@@ -15,18 +31,6 @@ export const stepInfo = {
 
 export const stepPlan = {
   step: 2,
-  arcade: {
-    monthly: 9,
-    yearly: 90,
-  },
-  advanced: {
-    monthly: 12,
-    yearly: 120,
-  },
-  pro: {
-    monthly: 15,
-    yearly: 150,
-  },
 };
 
 export const stepAddOns = {
