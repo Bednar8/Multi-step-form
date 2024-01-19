@@ -3,26 +3,59 @@ import iconArcade from '../../assets/images/icon-arcade.svg';
 import iconAdvanced from '../../assets/images/icon-advanced.svg';
 import iconPro from '../../assets/images/icon-pro.svg';
 class StepPlanView extends View {
-  _allPlans = document.querySelectorAll('.plan__item');
+  // _allPlansArr = Array.from(document.querySelectorAll('.plan__item'));
+  _data;
 
   addHandlerChoosePlan(handler) {
     this._parentEl.addEventListener('click', function (e) {
       const plan = e.target.closest('.plan__item');
+
       if (!plan) return;
+
+      const isPlanActive = plan.classList.contains('plan__item-active');
       const allPlans = document.querySelectorAll('.plan__item');
-      if (e.target.closest('.plan__item') !== plan) return;
+
       allPlans.forEach(el => el.classList.remove('plan__item-active'));
-      plan.classList.toggle('plan__item-active');
+      plan.classList.add('plan__item-active');
+
+      handler();
+    });
+  }
+
+  addHandlerChangeTime(handler) {
+    this._parentEl.addEventListener('click', function (e) {
+      const checkbox = e.target.closest('#switch');
+      const monthly = this.querySelector('.plan__switch--monthly');
+      const yearly = this.querySelector('.plan__switch-yearly');
+      if (!checkbox) return;
+      if (checkbox.checked) {
+        yearly.classList.add('plan__switch--active');
+        monthly.classList.remove('plan__switch--active');
+      } else {
+        monthly.classList.add('plan__switch--active');
+        yearly.classList.remove('plan__switch--active');
+      }
       handler();
     });
   }
 
   getPlanOption() {
-    console.log(this._allPlans);
+    const allPlans = Array.from(document.querySelectorAll('.plan__item'));
+    const currentPlan = allPlans.find(plan =>
+      plan.classList.contains('plan__item-active')
+    );
+    return currentPlan.dataset.plan;
   }
 
   getPlanTime() {
-    // If input is checked -> yearly time
+    const allTimeElements = Array.from(
+      document.querySelectorAll('.plan__switch--time')
+    );
+    const currentTime = allTimeElements.find(time =>
+      time.classList.contains('plan__switch--active')
+    );
+    if (!currentTime) return;
+    return currentTime.dataset.time;
   }
 
   _generateMarkup() {
@@ -58,12 +91,12 @@ class StepPlanView extends View {
   </div>
 
       <div class="plan__switch">
-        <p class="plan__switch--monthly plan__switch--active">Monthly</p>
+        <p class="plan__switch--monthly plan__switch--active plan__switch--time" data-time="monthly">Monthly</p>
         <label class="switch" for="switch">
-          <input type="checkbox" name="switch" id="switch" checked>
+          <input type="checkbox" name="switch" id="switch">
           <span class="plan__switch--slider"></span>
         </label>
-        <p class="plan__switch-yearly">Yearly</p>
+        <p class="plan__switch-yearly plan__switch--time" data-time="yearly">Yearly</p>
       </div>
     </div>
 

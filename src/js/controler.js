@@ -7,14 +7,7 @@ import stepSummaryView from './views/stepSummaryView.js';
 import stepThanksView from './views/stepThanksView.js';
 import navView from './views/navView.js';
 
-const controlNextSteps = function () {
-  // Check if current step is on info step-> is yes do validation and pass value to correctForm
-  if (model.state.currentStep === model.stepInfo.step) {
-    model.state.correctForm = stepInfoView.validationForm();
-  }
-  if (!model.state.correctForm) return;
-  // go to next step
-  model.state.currentStep++;
+const switchCurrentStep = function () {
   switch (model.state.currentStep) {
     case model.stepInfo.step:
       stepInfoView.render();
@@ -32,6 +25,16 @@ const controlNextSteps = function () {
       stepThanksView.render();
       break;
   }
+};
+const controlNextSteps = function () {
+  // Check if current step is on info step-> is yes do validation and pass value to correctForm
+  if (model.state.currentStep === model.stepInfo.step) {
+    model.state.correctForm = stepInfoView.validationForm();
+  }
+  if (!model.state.correctForm) return;
+  // go to next step
+  model.state.currentStep++;
+  switchCurrentStep();
 
   // Control buttons to not display go back button when user is on info step
   view.controlButtons(model.state.currentStep, model.stepInfo.step);
@@ -42,23 +45,7 @@ const controlNextSteps = function () {
 const controlBackSteps = function () {
   // go to back step
   model.state.currentStep--;
-  switch (model.state.currentStep) {
-    case model.stepInfo.step:
-      stepInfoView.render();
-      break;
-    case model.stepPlan.step:
-      stepPlanView.render();
-      break;
-    case model.stepAddOns.step:
-      stepAddOnsView.render();
-      break;
-    case model.stepSummary.step:
-      stepSummaryView.render();
-      break;
-    case model.stepThanks.step:
-      stepThanksView.render();
-      break;
-  }
+  switchCurrentStep();
 
   // Control buttons to not display go back button when user is on info step
   view.controlButtons(model.state.currentStep, model.stepInfo.step);
@@ -67,7 +54,16 @@ const controlBackSteps = function () {
 };
 
 const controlPlan = function () {
-  stepPlanView.getPlanOption();
+  const currentPlanKey = stepPlanView.getPlanOption();
+  if (!currentPlanKey) return;
+  model.state.allPlan = model.stepPlan;
+  model.state.currentPlan.plan = model.stepPlan[currentPlanKey];
+  console.log(model.state);
+};
+
+const controlTime = function () {
+  const currentTimeName = stepPlanView.getPlanTime();
+  console.log(currentTimeName);
 };
 
 const init = function () {
@@ -76,6 +72,7 @@ const init = function () {
   view.addHandlerClickBackStep(controlBackSteps);
   navView.addActiveNavItem(model.state.currentStep);
   stepPlanView.addHandlerChoosePlan(controlPlan);
+  stepPlanView.addHandlerChangeTime(controlTime);
 };
 
 init();

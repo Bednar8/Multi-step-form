@@ -3,8 +3,10 @@ export const state = {
     plan: '',
     addOns: [],
   },
+  allPlan: {},
   currentStep: 1,
   correctForm: false,
+  currentTime: '',
 };
 
 export const stepInfo = {
