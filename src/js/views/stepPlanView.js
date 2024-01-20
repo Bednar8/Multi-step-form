@@ -3,17 +3,16 @@ import iconArcade from '../../assets/images/icon-arcade.svg';
 import iconAdvanced from '../../assets/images/icon-advanced.svg';
 import iconPro from '../../assets/images/icon-pro.svg';
 class StepPlanView extends View {
-  // _allPlansArr = Array.from(document.querySelectorAll('.plan__item'));
   _data;
 
   addHandlerChoosePlan(handler) {
     this._parentEl.addEventListener('click', function (e) {
-      const plan = e.target.closest('.plan__item');
+      const plan = e.target.closest('.plan__item--option');
 
       if (!plan) return;
 
       const isPlanActive = plan.classList.contains('plan__item-active');
-      const allPlans = document.querySelectorAll('.plan__item');
+      const allPlans = document.querySelectorAll('.plan__item--option');
 
       allPlans.forEach(el => el.classList.remove('plan__item-active'));
       plan.classList.add('plan__item-active');
@@ -40,7 +39,9 @@ class StepPlanView extends View {
   }
 
   getPlanOption() {
-    const allPlans = Array.from(document.querySelectorAll('.plan__item'));
+    const allPlans = Array.from(
+      document.querySelectorAll('.plan__item--option')
+    );
     const currentPlan = allPlans.find(plan =>
       plan.classList.contains('plan__item-active')
     );
@@ -58,17 +59,24 @@ class StepPlanView extends View {
     return currentTime.dataset.time;
   }
 
+  renderError() {
+    const errorMsg = document.querySelector('.plan__error');
+    errorMsg.classList.remove('hidden');
+  }
+
   _generateMarkup() {
-    console.log(this._data);
     return `
     <div class="step__container--box" data-step="2">
     <h2 class="step--title">Select your plan</h2>
     <p class="step--description">You have the option of monthly or yearly
       billing.</p>
+      <p class="plan__error form--item-error hidden">Choose the plan to go the next step.</p>
 
     <div class="plan__box">
     <div class="plan__box--desktop">
-    <div class="plan__item" data-plan="arcade">
+    <div class="plan__item plan__item--option ${
+      this._data.currentPlan.name === 'arcade' ? 'plan__item-active' : ''
+    }" data-plan="arcade">
       <img src="${iconArcade}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Arcade</h3>
@@ -79,7 +87,9 @@ class StepPlanView extends View {
         }</p>
       </div>
     </div>
-    <div class="plan__item" data-plan="advanced">
+    <div class="plan__item plan__item--option ${
+      this._data.currentPlan.name === 'advanced' ? 'plan__item-active' : ''
+    }" data-plan="advanced">
       <img src="${iconAdvanced}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Advanced</h3>
@@ -90,7 +100,9 @@ class StepPlanView extends View {
         }</p>
       </div>
     </div>
-    <div class="plan__item" data-plan="pro">
+    <div class="plan__item plan__item--option ${
+      this._data.currentPlan.name === 'pro' ? 'plan__item-active' : ''
+    }" data-plan="pro">
       <img src="${iconPro}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Pro</h3>
@@ -104,14 +116,20 @@ class StepPlanView extends View {
   </div>
 
       <div class="plan__switch">
-        <p class="plan__switch--monthly plan__switch--active plan__switch--time" data-time="monthly">Monthly</p>
+        <p class="plan__switch--monthly ${
+          this._data.currentTime.name === 'monthly'
+            ? `plan__switch--active`
+            : ``
+        } plan__switch--time" data-time="monthly">Monthly</p>
         <label class="switch" for="switch">
           <input type="checkbox" name="switch" id="switch" ${
             this._data.currentTime.name === 'monthly' ? '' : 'checked'
           }>
           <span class="plan__switch--slider"></span>
         </label>
-        <p class="plan__switch-yearly plan__switch--time" data-time="yearly">Yearly</p>
+        <p class="plan__switch-yearly ${
+          this._data.currentTime.name === 'yearly' ? `plan__switch--active` : ``
+        } plan__switch--time" data-time="yearly">Yearly</p>
       </div>
     </div>
 

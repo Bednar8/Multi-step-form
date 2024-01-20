@@ -17,6 +17,20 @@ export const state = {
       yearly: 150,
     },
   },
+  allAddOns: {
+    onlineServica: {
+      monthly: 1,
+      yearly: 10,
+    },
+    largerStorage: {
+      monthly: 2,
+      yearly: 20,
+    },
+    customizableProfile: {
+      monthly: 2,
+      yearly: 20,
+    },
+  },
   currentStep: 1,
   correctForm: false,
   currentTime: {
@@ -35,18 +49,6 @@ export const stepPlan = {
 
 export const stepAddOns = {
   step: 3,
-  onlineServica: {
-    monthly: 1,
-    yearly: 10,
-  },
-  largerStorage: {
-    monthly: 2,
-    yearly: 20,
-  },
-  customizableProfile: {
-    monthly: 2,
-    yearly: 20,
-  },
 };
 
 export const stepSummary = {

@@ -16,7 +16,7 @@ const switchCurrentStep = function () {
       stepPlanView.render(model.state);
       break;
     case model.stepAddOns.step:
-      stepAddOnsView.render();
+      stepAddOnsView.render(model.state);
       break;
     case model.stepSummary.step:
       stepSummaryView.render();
@@ -32,6 +32,13 @@ const controlNextSteps = function () {
     model.state.correctForm = stepInfoView.validationForm();
   }
   if (!model.state.correctForm) return;
+  // Check if current plan is choosen -> if no cant go to next step and render Error
+  if (model.state.currentStep === model.stepPlan.step) {
+    if (model.state.currentPlan.name === '') {
+      stepPlanView.renderError();
+      return;
+    }
+  }
   // go to next step
   model.state.currentStep++;
   switchCurrentStep();
@@ -72,6 +79,10 @@ const controlTime = function () {
   stepPlanView.render(model.state);
 };
 
+const controlAddOns = function () {
+  console.log('tak');
+};
+
 const init = function () {
   view.controlButtons(model.state.currentStep, model.stepInfo.step);
   view.addHandlerClickNextStep(controlNextSteps);
@@ -79,6 +90,7 @@ const init = function () {
   navView.addActiveNavItem(model.state.currentStep);
   stepPlanView.addHandlerChoosePlan(controlPlan);
   stepPlanView.addHandlerChangeTime(controlTime);
+  stepAddOnsView.addHandlerChooseAddOns(controlAddOns);
 };
 
 init();

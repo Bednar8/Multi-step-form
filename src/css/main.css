@@ -44,7 +44,6 @@ html {
 }
 
 body {
-  /* height: 100vh; */
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.6rem;
   background-color: var(--color-magnolia);
@@ -101,11 +100,6 @@ body {
   background-color: var(--color-primary);
 }
 
-/* base classes */
-/* .bg-decoration {
-	width: 100%;
-} */
-
 .bg-decoration img {
   position: absolute;
   top: 0;
@@ -124,7 +118,6 @@ body {
   position: relative;
   margin: 0 auto;
   height: 100%;
-  /*  */
 }
 
 .nav__desktop {
@@ -132,12 +125,8 @@ body {
 }
 
 .nav__mobile {
-  /* height: 30%; */
   display: flex;
   justify-content: center;
-  /* background-image: url(/assets/images/bg-sidebar-mobile.svg); */
-  /* background-size: cover; */
-  /* background-position: center; */
   color: var(--color-white);
   font-weight: 700;
 }
@@ -171,10 +160,10 @@ body {
 }
 
 .step__container--box {
+  height: 100%;
   max-width: 600px;
   margin: 0 auto;
   margin-bottom: 100px;
-  /* margin-top: -9rem; */
   padding: 3.5rem 2.5rem;
   background-color: var(--color-white);
   border-radius: 8px;
@@ -335,7 +324,7 @@ body {
   color: var(--color-primary);
 }
 
-/* Step third */
+/* Step add-ons */
 
 .add-ons--price {
   margin-left: auto;
@@ -369,6 +358,10 @@ body {
 }
 
 .add-ons--span::before {
+  display: none;
+}
+
+.plan__item input:checked + .add-ons--span::before {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -380,11 +373,7 @@ body {
   border: none;
 }
 
-.plan__item input:checked + .add-ons--span::before {
-  display: none;
-}
-
-/* Step fourth */
+/* Step summary */
 
 .summary--box {
   margin-top: 2rem;
@@ -470,7 +459,7 @@ body {
 /* large >= 992px */
 
 @media (min-width: 992px) {
-  /* Base classes */
+  /* Base classes - large */
   body {
     display: flex;
     align-items: center;
@@ -516,7 +505,7 @@ body {
     box-shadow: 0px 0px 0px;
   }
 
-  /* Nav/sidebar */
+  /* Nav/sidebar - large */
 
   .nav__desktop {
     display: flex;
@@ -560,7 +549,7 @@ body {
     display: none;
   }
 
-  /* Step second */
+  /* Step plan - large */
 
   .plan__box {
     width: 100%;
@@ -583,7 +572,7 @@ body {
     font-size: 1.2rem;
   }
 
-  /* Step third */
+  /* Step add-ons - large */
 
   .plan__add-ons .plan__item {
     flex-direction: row;
@@ -597,7 +586,7 @@ body {
     margin-left: 1.5rem;
   }
 
-  /* Step fourth */
+  /* Step summary - large */
   .summary--box {
     padding: 2rem;
   }
@@ -605,7 +594,7 @@ body {
     margin-top: 1rem;
   }
 
-  /* Step thanks */
+  /* Step thanks - large */
   .thanks__container {
     height: 100%;
     width: 100%;
@@ -617,8 +606,8 @@ body {
   .thanks__box {
     height: 100%;
   }
-  /* Buttons */
 
+  /* Buttons - large */
   .btns__container {
     position: absolute;
     bottom: 1rem;
