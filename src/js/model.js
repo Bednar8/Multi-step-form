@@ -19,14 +19,17 @@ export const state = {
   },
   allAddOns: {
     onlineServica: {
+      name: 'Online servica',
       monthly: 1,
       yearly: 10,
     },
     largerStorage: {
+      name: 'Larger storage',
       monthly: 2,
       yearly: 20,
     },
     customizableProfile: {
+      name: 'Customizable profile',
       monthly: 2,
       yearly: 20,
     },
@@ -34,7 +37,7 @@ export const state = {
   currentStep: 1,
   correctForm: false,
   currentTime: {
-    name: 'monthly',
+    name: 'Monthly',
     value: '',
   },
 };

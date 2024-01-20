@@ -7,8 +7,6 @@ class StepAddOnsView extends View {
       if (!addOns) return;
       const input = addOns.querySelector('input');
 
-      if (!addOns) return;
-
       addOns.classList.toggle('plan__item-active');
       if (addOns.classList.contains('plan__item-active')) input.checked = true;
       else input.checked = false;
@@ -17,7 +15,14 @@ class StepAddOnsView extends View {
     });
   }
 
-  getCurrentAddOns() {}
+  getCurrentAddOns() {
+    const activeAddOnsElements = Array.from(
+      document.querySelectorAll('.plan__item-active')
+    );
+
+    const nameAddOns = activeAddOnsElements.map(addOns => addOns.dataset.name);
+    return nameAddOns;
+  }
 
   _generateMarkup() {
     return `
@@ -28,7 +33,7 @@ class StepAddOnsView extends View {
 
         <div class="plan__add-ons">
 
-          <div class="plan__item add-ons">
+          <div class="plan__item add-ons" data-name="onlineServica">
             <label class="add-ons--label" for="add-ons1">
               <input class="add-ons--checkbox" type="checkbox" name="add-ons1"
                 id="add-ons1">
@@ -39,13 +44,13 @@ class StepAddOnsView extends View {
               <p class="plan__item--price">Access to multiplayer games</p>
             </div>
             <p class="add-ons--price">+$${
-              this._data.currentTime.name === 'monthly'
+              this._data.currentTime.name === 'Monthly'
                 ? `${this._data.allAddOns.onlineServica.monthly}/mo`
                 : `${this._data.allAddOns.onlineServica.yearly}/yr`
             }</p>
           </div>
 
-          <div class="plan__item add-ons">
+          <div class="plan__item add-ons" data-name="largerStorage">
 
             <label class="add-ons--label" for="add-ons2">
               <input class="add-ons--checkbox" type="checkbox" name="add-ons2"
@@ -57,14 +62,14 @@ class StepAddOnsView extends View {
               <p class="plan__item--price">Extra 1TB of cloud save</p>
             </div>
             <p class="add-ons--price">+$${
-              this._data.currentTime.name === 'monthly'
+              this._data.currentTime.name === 'Monthly'
                 ? `${this._data.allAddOns.largerStorage.monthly}/mo`
                 : `${this._data.allAddOns.largerStorage.yearly}/yr`
             }</p>
 
           </div>
 
-          <div class="plan__item add-ons">
+          <div class="plan__item add-ons" data-name="customizableProfile">
             <label class="add-ons--label" for="add-ons3">
               <input class="add-ons--checkbox" type="checkbox" name="add-ons3"
                 id="add-ons3">
@@ -76,7 +81,7 @@ class StepAddOnsView extends View {
               <p class="plan__item--price">Custom theme on your profile</p>
             </div>
             <p class="add-ons--price">+$${
-              this._data.currentTime.name === 'monthly'
+              this._data.currentTime.name === 'Monthly'
                 ? `${this._data.allAddOns.customizableProfile.monthly}/mo`
                 : `${this._data.allAddOns.customizableProfile.yearly}/yr`
             }</p>

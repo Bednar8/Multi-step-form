@@ -19,7 +19,7 @@ const switchCurrentStep = function () {
       stepAddOnsView.render(model.state);
       break;
     case model.stepSummary.step:
-      stepSummaryView.render();
+      stepSummaryView.render(model.state);
       break;
     case model.stepThanks.step:
       stepThanksView.render();
@@ -38,6 +38,10 @@ const controlNextSteps = function () {
       stepPlanView.renderError();
       return;
     }
+  }
+  // Check if current step is addOns -> if yes store addOns in state
+  if (model.state.currentStep === model.stepAddOns.step) {
+    // model.state.currentPlan.addOns = [model.stepAd]
   }
   // go to next step
   model.state.currentStep++;
@@ -63,24 +67,33 @@ const controlBackSteps = function () {
 // Control plan and add current plan to state
 const controlPlan = function () {
   const currentPlanKey = stepPlanView.getPlanOption();
-  console.log(currentPlanKey);
   if (!currentPlanKey) return;
-  // model.state.allPlan = model.stepPlan;
-  model.state.currentPlan.name = currentPlanKey;
+  model.state.currentPlan.name =
+    currentPlanKey.charAt(0).toUpperCase() + currentPlanKey.slice(1);
 };
 
 // Control time and add current time to state
 const controlTime = function () {
   const currentTimeName = stepPlanView.getPlanTime();
 
-  model.state.currentTime.name = currentTimeName;
-  // model.state.currentTime.value = model.state.currentPlan.name[currentTimeName];
-  console.log(model.state.currentTime);
+  model.state.currentTime.name =
+    currentTimeName.charAt(0).toUpperCase() + currentTimeName.slice(1);
   stepPlanView.render(model.state);
+  console.log(model.state.currentTime);
 };
 
 const controlAddOns = function () {
-  console.log('tak');
+  const addOnsNames = stepAddOnsView.getCurrentAddOns();
+  addOnsNames.forEach(name => {
+    if (model.state.currentPlan.addOns.length > addOnsNames.length) {
+      model.state.currentPlan.addOns = [];
+      model.state.currentPlan.addOns.push(model.state.allAddOns[name]);
+      return;
+    }
+    if (model.state.currentPlan.addOns.includes(model.state.allAddOns[name]))
+      return;
+    model.state.currentPlan.addOns.push(model.state.allAddOns[name]);
+  });
 };
 
 const init = function () {

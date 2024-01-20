@@ -75,39 +75,39 @@ class StepPlanView extends View {
     <div class="plan__box">
     <div class="plan__box--desktop">
     <div class="plan__item plan__item--option ${
-      this._data.currentPlan.name === 'arcade' ? 'plan__item-active' : ''
+      this._data.currentPlan.name === 'Arcade' ? 'plan__item-active' : ''
     }" data-plan="arcade">
       <img src="${iconArcade}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Arcade</h3>
         <p class="plan__item--price">$${
-          this._data.currentTime.name === 'monthly'
+          this._data.currentTime.name === 'Monthly'
             ? `${this._data.allPlan.arcade.monthly}/mo`
             : `${this._data.allPlan.arcade.yearly}/yr`
         }</p>
       </div>
     </div>
     <div class="plan__item plan__item--option ${
-      this._data.currentPlan.name === 'advanced' ? 'plan__item-active' : ''
+      this._data.currentPlan.name === 'Advanced' ? 'plan__item-active' : ''
     }" data-plan="advanced">
       <img src="${iconAdvanced}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Advanced</h3>
         <p class="plan__item--price">$${
-          this._data.currentTime.name === 'monthly'
+          this._data.currentTime.name === 'Monthly'
             ? `${this._data.allPlan.advanced.monthly}/mo`
             : `${this._data.allPlan.advanced.yearly}/yr`
         }</p>
       </div>
     </div>
     <div class="plan__item plan__item--option ${
-      this._data.currentPlan.name === 'pro' ? 'plan__item-active' : ''
+      this._data.currentPlan.name === 'Pro' ? 'plan__item-active' : ''
     }" data-plan="pro">
       <img src="${iconPro}" alt="">
       <div class="plan__item--description">
         <h3 class="plan__item--title">Pro</h3>
         <p class="plan__item--price">$${
-          this._data.currentTime.name === 'monthly'
+          this._data.currentTime.name === 'Monthly'
             ? `${this._data.allPlan.pro.monthly}/mo`
             : `${this._data.allPlan.pro.yearly}/yr`
         }</p>
@@ -117,18 +117,18 @@ class StepPlanView extends View {
 
       <div class="plan__switch">
         <p class="plan__switch--monthly ${
-          this._data.currentTime.name === 'monthly'
+          this._data.currentTime.name === 'Monthly'
             ? `plan__switch--active`
             : ``
         } plan__switch--time" data-time="monthly">Monthly</p>
         <label class="switch" for="switch">
           <input type="checkbox" name="switch" id="switch" ${
-            this._data.currentTime.name === 'monthly' ? '' : 'checked'
+            this._data.currentTime.name === 'Monthly' ? '' : 'checked'
           }>
           <span class="plan__switch--slider"></span>
         </label>
         <p class="plan__switch-yearly ${
-          this._data.currentTime.name === 'yearly' ? `plan__switch--active` : ``
+          this._data.currentTime.name === 'Yearly' ? `plan__switch--active` : ``
         } plan__switch--time" data-time="yearly">Yearly</p>
       </div>
     </div>
