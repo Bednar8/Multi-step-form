@@ -38,7 +38,7 @@ class StepPlanView extends View {
     });
   }
 
-  // Feature to do -> if change time then not to render whole step but only change text in plan option
+  // Feature to do -> if change time then not to render whole step but only change text in plan option (it's neccesary becouse is animation on switch animation)
   changePlanValue() {
     const input = document.querySelector('#switch');
     const planPrize = document.querySelectorAll('.plan__item--price');

@@ -38,7 +38,6 @@ export const state = {
   correctForm: false,
   currentTime: {
     name: 'Monthly',
-    value: '',
   },
 };
 
