@@ -1,11 +1,6 @@
 import View from './View';
 class StepSummaryView extends View {
   _generateMarkup() {
-    console.log(this._data);
-    console.log(
-      this._data.allPlan[this._data.currentPlan.name.toLowerCase()].monthly
-    );
-
     return `
     <div class="step__container--box" data-step="4">
     <h2 class="step--title">Finishing up</h2>
@@ -42,7 +37,7 @@ class StepSummaryView extends View {
         <p>Total <span class="summary__total--time">(per ${
           this._data.currentTime.name === 'Monthly' ? 'month' : 'year'
         })</span></p>
-        <p class="summary__total--price">+$${this._calculateTotal()}/mo</p>
+        <p class="summary__total--price">+$${this._calculateTotal()}</p>
       </div>
       <div class="btns__container">
         <button class="btn-steps btn--back ">Go Back</button>
@@ -75,14 +70,17 @@ class StepSummaryView extends View {
         ? this._data.allPlan[this._data.currentPlan.name.toLowerCase()].monthly
         : this._data.allPlan[this._data.currentPlan.name.toLowerCase()].yearly;
 
-    const addOnsPrize = this._data.currentPlan.addOns.reduce((acc, cur) => {
-      return this._data.currentTime.name === 'Monthly'
-        ? acc.monthly + cur.monthly
-        : acc.yearly + cur.yearly;
-    }, '');
-    console.log(addOnsPrize);
+    const addOnsPrize = this._data.currentPlan.addOns
+      .map(addOns =>
+        this._data.currentTime.name === 'Monthly'
+          ? addOns.monthly
+          : addOns.yearly
+      )
+      .reduce((acc, cur) => acc + cur, 0);
 
-    return planPrize;
+    return this._data.currentTime.name === 'Monthly'
+      ? `${planPrize + addOnsPrize}/mo`
+      : `${planPrize + addOnsPrize}/yr`;
   }
 }
 

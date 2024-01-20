@@ -38,6 +38,21 @@ class StepPlanView extends View {
     });
   }
 
+  // Feature to do -> if change time then not to render whole step but only change text in plan option
+  changePlanValue() {
+    const input = document.querySelector('#switch');
+    const planPrize = document.querySelectorAll('.plan__item--price');
+    if (input.checked === true) {
+      // ${
+      //   this._data.currentTime.name === 'Monthly'
+      //     ? `${this._data.allPlan.arcade.monthly}/mo`
+      //     : `${this._data.allPlan.arcade.yearly}/yr`
+      // }
+      // console.log(planPrize);
+    }
+  }
+  ///////////////////////////////////////
+
   getPlanOption() {
     const allPlans = Array.from(
       document.querySelectorAll('.plan__item--option')

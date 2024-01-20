@@ -26,6 +26,7 @@ const switchCurrentStep = function () {
       break;
   }
 };
+
 const controlNextSteps = function () {
   // Check if current step is on info step-> is yes do validation and pass value to correctForm
   if (model.state.currentStep === model.stepInfo.step) {
@@ -39,12 +40,13 @@ const controlNextSteps = function () {
       return;
     }
   }
-  // Check if current step is addOns -> if yes store addOns in state
-  if (model.state.currentStep === model.stepAddOns.step) {
-    // model.state.currentPlan.addOns = [model.stepAd]
-  }
+
   // go to next step
   model.state.currentStep++;
+  // Check if current step is addOns -> if yes add empty array
+  if (model.state.currentStep === model.stepAddOns.step) {
+    model.state.currentPlan.addOns = [];
+  }
   switchCurrentStep();
 
   // Control buttons to not display go back button when user is on info step
@@ -57,6 +59,10 @@ const controlBackSteps = function () {
   // go to back step
   model.state.currentStep--;
   switchCurrentStep();
+  // Check if current step is addOns -> if yes add empty array
+  if (model.state.currentStep === model.stepAddOns.step) {
+    model.state.currentPlan.addOns = [];
+  }
 
   // Control buttons to not display go back button when user is on info step
   view.controlButtons(model.state.currentStep, model.stepInfo.step);
@@ -79,9 +85,9 @@ const controlTime = function () {
   model.state.currentTime.name =
     currentTimeName.charAt(0).toUpperCase() + currentTimeName.slice(1);
   stepPlanView.render(model.state);
-  console.log(model.state.currentTime);
 };
 
+// Control addOns, if state has more elements than addOns array then do empty array and get correct elements
 const controlAddOns = function () {
   const addOnsNames = stepAddOnsView.getCurrentAddOns();
   addOnsNames.forEach(name => {
