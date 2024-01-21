@@ -39,24 +39,11 @@ export const state = {
   currentTime: {
     name: 'Monthly',
   },
-};
-
-export const stepInfo = {
-  step: 1,
-};
-
-export const stepPlan = {
-  step: 2,
-};
-
-export const stepAddOns = {
-  step: 3,
-};
-
-export const stepSummary = {
-  step: 4,
-};
-
-export const stepThanks = {
-  step: 5,
+  steps: {
+    stepInfo: 1,
+    stepPlan: 2,
+    stepAddOns: 3,
+    stepSummary: 4,
+    stepThanks: 5,
+  },
 };
