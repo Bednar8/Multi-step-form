@@ -11,7 +11,6 @@ class StepPlanView extends View {
 
       if (!plan) return;
 
-      const isPlanActive = plan.classList.contains('plan__item-active');
       const allPlans = document.querySelectorAll('.plan__item--option');
 
       allPlans.forEach(el => el.classList.remove('plan__item-active'));
@@ -40,16 +39,23 @@ class StepPlanView extends View {
 
   // Feature to do -> if change time then not to render whole step but only change text in plan option (it's neccesary becouse is animation on switch animation)
   changePlanValue() {
-    const input = document.querySelector('#switch');
-    const planPrize = document.querySelectorAll('.plan__item--price');
-    if (input.checked === true) {
-      // ${
-      //   this._data.currentTime.name === 'Monthly'
-      //     ? `${this._data.allPlan.arcade.monthly}/mo`
-      //     : `${this._data.allPlan.arcade.yearly}/yr`
-      // }
-      // console.log(planPrize);
-    }
+    const planBox = document.querySelector('.plan__box--desktop');
+    if (!planBox) return;
+    const markup =
+      this._generateMarkupPlan(
+        this._data.allPlan.arcade,
+        iconArcade,
+        'Arcade'
+      ) +
+      this._generateMarkupPlan(
+        this._data.allPlan.advanced,
+        iconAdvanced,
+        'Advanced'
+      ) +
+      this._generateMarkupPlan(this._data.allPlan.pro, iconPro, 'Pro');
+
+    planBox.innerHTML = '';
+    planBox.insertAdjacentHTML('afterbegin', markup);
   }
   ///////////////////////////////////////
 
@@ -88,47 +94,19 @@ class StepPlanView extends View {
       <p class="plan__error form--item-error hidden">Choose the plan to go the next step.</p>
 
     <div class="plan__box">
-    <div class="plan__box--desktop">
-    <div class="plan__item plan__item--option ${
-      this._data.currentPlan.name === 'Arcade' ? 'plan__item-active' : ''
-    }" data-plan="arcade">
-      <img src="${iconArcade}" alt="">
-      <div class="plan__item--description">
-        <h3 class="plan__item--title">Arcade</h3>
-        <p class="plan__item--price">$${
-          this._data.currentTime.name === 'Monthly'
-            ? `${this._data.allPlan.arcade.monthly}/mo`
-            : `${this._data.allPlan.arcade.yearly}/yr`
-        }</p>
+      <div class="plan__box--desktop">
+          ${this._generateMarkupPlan(
+            this._data.allPlan.arcade,
+            iconArcade,
+            'Arcade'
+          )}
+          ${this._generateMarkupPlan(
+            this._data.allPlan.advanced,
+            iconAdvanced,
+            'Advanced'
+          )}
+          ${this._generateMarkupPlan(this._data.allPlan.pro, iconPro, 'Pro')}
       </div>
-    </div>
-    <div class="plan__item plan__item--option ${
-      this._data.currentPlan.name === 'Advanced' ? 'plan__item-active' : ''
-    }" data-plan="advanced">
-      <img src="${iconAdvanced}" alt="">
-      <div class="plan__item--description">
-        <h3 class="plan__item--title">Advanced</h3>
-        <p class="plan__item--price">$${
-          this._data.currentTime.name === 'Monthly'
-            ? `${this._data.allPlan.advanced.monthly}/mo`
-            : `${this._data.allPlan.advanced.yearly}/yr`
-        }</p>
-      </div>
-    </div>
-    <div class="plan__item plan__item--option ${
-      this._data.currentPlan.name === 'Pro' ? 'plan__item-active' : ''
-    }" data-plan="pro">
-      <img src="${iconPro}" alt="">
-      <div class="plan__item--description">
-        <h3 class="plan__item--title">Pro</h3>
-        <p class="plan__item--price">$${
-          this._data.currentTime.name === 'Monthly'
-            ? `${this._data.allPlan.pro.monthly}/mo`
-            : `${this._data.allPlan.pro.yearly}/yr`
-        }</p>
-      </div>
-    </div>
-  </div>
 
       <div class="plan__switch">
         <p class="plan__switch--monthly ${
@@ -155,6 +133,28 @@ class StepPlanView extends View {
 
   </div>
     `;
+  }
+
+  _generateMarkupPlan(plan, icon, planName) {
+    const planWithLower = planName.charAt(0).toLowerCase() + planName.slice(1);
+    return `<div class="plan__item plan__item--option ${
+      this._data.currentTime.name === 'Monthly' ? `f-center` : ``
+    } ${
+      this._data.currentPlan.name === planName ? 'plan__item-active' : ''
+    }" data-plan="${planWithLower}">
+      <img src="${icon}" alt="">
+      <div class="plan__item--description">
+        <h3 class="plan__item--title">${planName}</h3>
+        <p class="plan__item--price">$${
+          this._data.currentTime.name === 'Monthly'
+            ? `${plan.monthly}/mo`
+            : `${plan.yearly}/yr`
+        }</p>
+        <p class="plan__item--prom ${
+          this._data.currentTime.name === 'Monthly' ? `hidden` : ``
+        }">2 months free</p>
+      </div>
+    </div>`;
   }
 }
 

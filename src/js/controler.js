@@ -7,11 +7,9 @@ import stepSummaryView from './views/stepSummaryView.js';
 import stepThanksView from './views/stepThanksView.js';
 import navView from './views/navView.js';
 
-// 1. Create method to generate plan i stepPlanView in method _generateMarkup (DRY)
-// 2. Feature to do -> if change time then not to render whole step but only change text in plan option (it's neccesary becouse is animation on switch input)
-// 3. Fixed css -> add some space (look at design and try to do better)
-// 4. Feature to change step using nav -> important to not do if neccesary things isnt did in current step
-// 5. Create method in summary step to user can change plan -> if click on "change" go to step plan
+// 1. Feature to change step using nav -> important to not do if neccesary things isnt did in current step
+// 2. Create method in summary step to user can change plan -> if click on "change" go to step plan
+// 3. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
 
 // Maybe its good idea to calculate monthly and yearly price (with $/yr/mo) or story current price or something like that
 
@@ -92,7 +90,8 @@ const controlTime = function () {
 
   model.state.currentTime.name =
     currentTimeName.charAt(0).toUpperCase() + currentTimeName.slice(1);
-  stepPlanView.render(model.state);
+  // stepPlanView.render(model.state);
+  stepPlanView.changePlanValue();
 };
 
 // Control addOns, if state has more elements than addOns array then do empty array and get correct elements
