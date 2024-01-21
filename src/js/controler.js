@@ -7,13 +7,12 @@ import stepSummaryView from './views/stepSummaryView.js';
 import stepThanksView from './views/stepThanksView.js';
 import navView from './views/navView.js';
 
-// 1. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
-// 2. Change flex in container btns -> when reload next step is on left side
-// 3. Do variables for long and uses mulitple time like model.state... bla bla in function
-// 4. Storage add-ons becouse when user back to change plan then add-ons is disappear
-// 5. Create method to generate add-ons (DRY)
-// 6. When currentPlan dont have name than cant go to step 3 and 4
-// 7. Set input checked if plan__item--active - to store it in storage in setAddOns
+// 1*. Storage add-ons becouse when user back to change plan then add-ons is disappear !important
+// 2*. Set input checked if plan__item--active - to store it in storage in setAddOns !important
+// 3*. If user is on stepAddOns and click 4 in nav -> addons dont storage
+// 4. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
+// 5. Change flex in container btns -> when reload next step is on left side
+// 6. Do variables for long and uses mulitple time like model.state... bla bla in function
 
 // Maybe its good idea to calculate monthly and yearly price (with $/yr/mo) or story current price or something like that
 
@@ -96,7 +95,22 @@ const controlNav = function (nextStep) {
     model.state.correctForm = stepInfoView.validationForm();
   }
   if (!model.state.correctForm) return;
-  model.state.currentStep = nextStep;
+
+  if (
+    model.state.currentPlan.name === '' &&
+    (nextStep === model.state.steps.stepSummary ||
+      nextStep === model.state.steps.stepAddOns)
+  ) {
+    model.state.currentStep = model.state.steps.stepPlan;
+    switchCurrentStep();
+    stepPlanView.renderError();
+    view.controlButtons(model.state.currentStep, model.state.steps.stepInfo);
+    navView.addActiveNavItem(
+      model.state.currentStep,
+      Object.keys(model.state.steps).length
+    );
+    return;
+  }
   // Check if current plan is choosen -> if no cant go to next step and render Error
   if (currentStep === model.state.steps.stepPlan) {
     if (model.state.currentPlan.name === '') {
@@ -109,6 +123,7 @@ const controlNav = function (nextStep) {
   if (model.state.currentStep === model.state.steps.stepAddOns) {
     model.state.currentPlan.addOns = [];
   }
+  model.state.currentStep = nextStep;
   switchCurrentStep();
 
   // Control buttons to not display go back button when user is on info step
