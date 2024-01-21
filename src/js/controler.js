@@ -7,12 +7,13 @@ import stepSummaryView from './views/stepSummaryView.js';
 import stepThanksView from './views/stepThanksView.js';
 import navView from './views/navView.js';
 
-// 1. Create method in summary step to user can change plan -> if click on "change" go to step plan
-// 2. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
-// 3. Change flex in container btns -> when reload next step is on left side
-// 4. Do variables for long and uses mulitple time like model.state... bla bla in function
-// 5. Storage add-ons becouse when user back to change plan then add-ons is disappear
-// 6. Create method to generate add-ons (DRY)
+// 1. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
+// 2. Change flex in container btns -> when reload next step is on left side
+// 3. Do variables for long and uses mulitple time like model.state... bla bla in function
+// 4. Storage add-ons becouse when user back to change plan then add-ons is disappear
+// 5. Create method to generate add-ons (DRY)
+// 6. When currentPlan dont have name than cant go to step 3 and 4
+// 7. Set input checked if plan__item--active - to store it in storage in setAddOns
 
 // Maybe its good idea to calculate monthly and yearly price (with $/yr/mo) or story current price or something like that
 
@@ -88,9 +89,8 @@ const controlBackSteps = function () {
 // Control nav
 
 const controlNav = function (nextStep) {
-  console.log(model.state.currentStep);
   const currentStep = navView.getCurrentStep();
-  console.log(currentStep);
+
   // Check if current step is on info step-> is yes do validation and pass value to correctForm
   if (model.state.currentStep === model.state.steps.stepInfo) {
     model.state.correctForm = stepInfoView.validationForm();
@@ -153,6 +153,25 @@ const controlAddOns = function () {
   });
 };
 
+const controlSummaryChangePlan = function () {
+  model.state.currentStep = model.state.steps.stepPlan;
+
+  if (model.state.currentPlan.name === '') {
+    stepPlanView.renderError();
+    return;
+  }
+
+  switchCurrentStep();
+
+  // Control buttons to not display go back button when user is on info step
+  view.controlButtons(model.state.currentStep, model.state.steps.stepInfo);
+  // control nav item -> add active class to current step
+  navView.addActiveNavItem(
+    model.state.currentStep,
+    Object.keys(model.state.steps).length
+  );
+};
+
 const init = function () {
   view.controlButtons(model.state.currentStep, model.state.steps.stepInfo);
   view.addHandlerClickNextStep(controlNextSteps);
@@ -161,10 +180,11 @@ const init = function () {
     model.state.currentStep,
     Object.keys(model.state.steps).length
   );
+  navView.addHandlerNavClick(controlNav);
   stepPlanView.addHandlerChoosePlan(controlPlan);
   stepPlanView.addHandlerChangeTime(controlTime);
   stepAddOnsView.addHandlerChooseAddOns(controlAddOns);
-  navView.addHandlerNavClick(controlNav);
+  stepSummaryView.addHandlerClickChangePlan(controlSummaryChangePlan);
 };
 
 init();

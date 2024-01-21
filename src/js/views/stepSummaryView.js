@@ -1,5 +1,13 @@
 import View from './View';
 class StepSummaryView extends View {
+  addHandlerClickChangePlan(handler) {
+    this._parentEl.addEventListener('click', function (e) {
+      const changePlanbtn = this.querySelector('.summary--change-anchor');
+      if (e.target !== changePlanbtn) return;
+      handler();
+    });
+  }
+
   _generateMarkup() {
     return `
     <div class="step__container--box" data-step="4">
@@ -15,7 +23,7 @@ class StepSummaryView extends View {
                 class="summary__time">(${
                   this._data.currentTime.name
                 })</span></p>
-            <a href="#">Change</a>
+            <a class="summary--change-anchor" href="#">Change</a>
           </div>
           <p class="summary__plan--price">$${
             this._data.currentTime.name === 'Monthly'

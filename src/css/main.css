@@ -287,6 +287,10 @@ body {
   font-weight: 500;
 }
 
+.plan__error {
+  text-align: start;
+}
+
 /* switch */
 .plan__switch {
   margin: 0 auto;
