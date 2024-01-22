@@ -33,12 +33,16 @@ class StepAddOnsView extends View {
 
         <div class="plan__add-ons">
 
-          <div class="plan__item add-ons ${this._getActiveClass(
-            'onlineServica'
+          <div class="plan__item add-ons ${this._checkActiveAddOns(
+            'onlineServica',
+            'plan__item-active'
           )}"  data-name="onlineServica">
             <label class="add-ons--label" for="add-ons1">
               <input class="add-ons--checkbox" type="checkbox" name="add-ons1"
-                id="add-ons1">
+                id="onlineServica" ${this._checkActiveAddOns(
+                  'onlineServica',
+                  'checked'
+                )}>
               <span class="add-ons--span"></span>
             </label>
             <div class="plan__item--description">
@@ -52,13 +56,17 @@ class StepAddOnsView extends View {
             }</p>
           </div>
 
-          <div class="plan__item add-ons ${this._getActiveClass(
-            'largerStorage'
+          <div class="plan__item add-ons ${this._checkActiveAddOns(
+            'largerStorage',
+            'plan__item-active'
           )}"  data-name="largerStorage">
 
             <label class="add-ons--label" for="add-ons2">
               <input class="add-ons--checkbox" type="checkbox" name="add-ons2"
-                id="add-ons2">
+                id="largerStorage" ${this._checkActiveAddOns(
+                  'largerStorage',
+                  'checked'
+                )}>
               <span class="add-ons--span"></span>
             </label>
             <div class="plan__item--description">
@@ -73,12 +81,16 @@ class StepAddOnsView extends View {
 
           </div>
 
-          <div class="plan__item add-ons ${this._getActiveClass(
-            'customizableProfile'
+          <div class="plan__item add-ons ${this._checkActiveAddOns(
+            'customizableProfile',
+            'plan__item-active'
           )}"  data-name="customizableProfile">
             <label class="add-ons--label" for="add-ons3">
               <input class="add-ons--checkbox" type="checkbox" name="add-ons3"
-                id="add-ons3">
+                id="customizableProfile" ${this._checkActiveAddOns(
+                  'customizableProfile',
+                  'checked'
+                )}>
               <span class="add-ons--span"></span>
             </label>
 
@@ -102,7 +114,7 @@ class StepAddOnsView extends View {
     `;
   }
 
-  _getActiveClass(addOnsName) {
+  _checkActiveAddOns(addOnsName, elementClass) {
     const addOnsData = addOnsName;
     const data = this._data.currentPlan.addOns.map(addOns => {
       const addOnsArr = addOns.name.split(' ');
@@ -113,14 +125,7 @@ class StepAddOnsView extends View {
 
       return addOnsName === addOnsData ? 'active' : '';
     });
-    if (data.includes('active')) return 'plan__item-active';
-  }
-
-  // Set input checked if plan__item--active - to store it in storage
-  _setChecked() {
-    const activeAddOnsElements = Array.from(
-      document.querySelectorAll('.plan__item-active')
-    );
+    if (data.includes('active')) return elementClass;
   }
 }
 

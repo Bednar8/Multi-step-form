@@ -7,12 +7,9 @@ import stepSummaryView from './views/stepSummaryView.js';
 import stepThanksView from './views/stepThanksView.js';
 import navView from './views/navView.js';
 
-// 1*. Storage add-ons becouse when user back to change plan then add-ons is disappear !important
-// 2*. Set input checked if plan__item--active - to store it in storage in setAddOns !important
-// 3*. If user is on stepAddOns and click 4 in nav -> addons dont storage
-// 4. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
-// 5. Change flex in container btns -> when reload next step is on left side
-// 6. Do variables for long and uses mulitple time like model.state... bla bla in function
+// 1. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
+// 2. Change flex in container btns -> when reload next step is on left side
+// 3. Do variables for long and uses mulitple time like model.state... bla bla in function
 
 // Maybe its good idea to calculate monthly and yearly price (with $/yr/mo) or story current price or something like that
 
@@ -52,10 +49,7 @@ const controlNextSteps = function () {
 
   // go to next step
   model.state.currentStep++;
-  // Check if current step is addOns -> if yes add empty array
-  if (model.state.currentStep === model.state.steps.stepAddOns) {
-    model.state.currentPlan.addOns = [];
-  }
+
   switchCurrentStep();
 
   // Control buttons to not display go back button when user is on info step
@@ -71,10 +65,6 @@ const controlBackSteps = function () {
   // go to back step
   model.state.currentStep--;
   switchCurrentStep();
-  // Check if current step is addOns -> if yes add empty array
-  if (model.state.currentStep === model.state.steps.stepAddOns) {
-    model.state.currentPlan.addOns = [];
-  }
 
   // Control buttons to not display go back button when user is on info step
   view.controlButtons(model.state.currentStep, model.state.steps.stepInfo);
@@ -119,10 +109,6 @@ const controlNav = function (nextStep) {
     }
   }
 
-  // Check if current step is addOns -> if yes add empty array
-  if (model.state.currentStep === model.state.steps.stepAddOns) {
-    model.state.currentPlan.addOns = [];
-  }
   model.state.currentStep = nextStep;
   switchCurrentStep();
 
