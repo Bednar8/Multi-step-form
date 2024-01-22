@@ -7,9 +7,7 @@ import stepSummaryView from './views/stepSummaryView.js';
 import stepThanksView from './views/stepThanksView.js';
 import navView from './views/navView.js';
 
-// 1. Change class name in html/css/js becouse some name like plan__box--desktop but it use in desktop and mobile
-// 2. Change flex in container btns -> when reload next step is on left side
-// 3. Do variables for long and uses mulitple time like model.state... bla bla in function
+// 1. Do variables for long and uses mulitple time like model.state... bla bla in function
 
 // Maybe its good idea to calculate monthly and yearly price (with $/yr/mo) or story current price or something like that
 
@@ -34,6 +32,9 @@ const switchCurrentStep = function () {
 };
 
 const controlNextSteps = function () {
+  const currentStep = model.state.currentStep;
+  const stepInfo = model.state.steps.stepInfo;
+  const stepsLength = Object.keys(model.state.steps).length;
   // Check if current step is on info step-> is yes do validation and pass value to correctForm
   if (model.state.currentStep === model.state.steps.stepInfo) {
     model.state.correctForm = stepInfoView.validationForm();

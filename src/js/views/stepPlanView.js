@@ -39,7 +39,7 @@ class StepPlanView extends View {
 
   // Feature to do -> if change time then not to render whole step but only change text in plan option (it's neccesary becouse is animation on switch animation)
   changePlanValue() {
-    const planBox = document.querySelector('.plan__box--desktop');
+    const planBox = document.querySelector('.plan__box');
     if (!planBox) return;
     const markup =
       this._generateMarkupPlan(
@@ -93,8 +93,8 @@ class StepPlanView extends View {
       billing.</p>
       <p class="plan__error form--item-error hidden">Choose the plan to go the next step.</p>
 
-    <div class="plan__box">
-      <div class="plan__box--desktop">
+    <div class="plan">
+      <div class="plan__box">
           ${this._generateMarkupPlan(
             this._data.allPlan.arcade,
             iconArcade,

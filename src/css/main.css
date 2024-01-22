@@ -58,7 +58,8 @@ body {
   width: 100%;
   padding: 1.5rem;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: flex-end;
   align-items: center;
   background-color: var(--color-white);
   box-shadow: 0px -5px 10px var(--color-alabaster);
@@ -240,7 +241,7 @@ body {
 }
 
 /* Step plan */
-.plan__box {
+.plan {
   margin-top: 1.5rem;
 }
 .plan__item {
@@ -599,10 +600,10 @@ body {
   }
   /* Step plan - large */
 
-  .plan__box {
+  .plan {
     width: 100%;
   }
-  .plan__box--desktop {
+  .plan__box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -689,7 +690,9 @@ body {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-end;
+
     align-items: center;
     box-shadow: none;
   }
