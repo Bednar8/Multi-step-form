@@ -124,7 +124,7 @@ body {
 
 .container {
   position: relative;
-  margin: 0 auto;
+  margin: 5rem auto;
   height: 100%;
 }
 
@@ -498,6 +498,7 @@ body {
   .bg-decoration {
     display: none;
   }
+
   .step__container {
     display: flex;
     justify-content: center;
@@ -589,6 +590,7 @@ body {
   .form--item {
     margin-bottom: 2rem;
   }
+
   .form--input {
     margin-top: 0.7rem;
     padding: 1.3rem 1.5rem;
@@ -603,6 +605,7 @@ body {
   .plan {
     width: 100%;
   }
+
   .plan__box {
     display: flex;
     justify-content: space-between;
@@ -690,7 +693,6 @@ body {
     left: 0;
     width: 100%;
     display: flex;
-    /* justify-content: space-between; */
     justify-content: flex-end;
 
     align-items: center;

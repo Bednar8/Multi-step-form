@@ -10,16 +10,15 @@ In this challenge, users progress through various steps of a form, entering simp
 
 ### Screenshot
 
-<img src="./src/assets/img-readme/Step info.png" width="400">
-<img src="./src/assets/img-readme/Step plan.png" width="400">
+<img src="./src/assets/img-readme/Step info.png" width="500">
+<img src="./src/assets/img-readme/Step plan.png" width="500">
 <img src="./src/assets/img-readme/Step add-ons.png" width="300">
-<img src="./src/assets/img-readme/Step summary.png.png" width="300">
+<img src="./src/assets/img-readme/Step summary.png" width="300">
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Multi-step form live preview](https://your-live-site-url.com)
 
 ### Built with
 
-In this project, I utilized vanilla JavaScript to practice and enhance my skills in planning and organizing code.
+In this project, I utilized vanilla JavaScript to practice and enhance my skills in planning and organizing code. I also used pure CSS.
