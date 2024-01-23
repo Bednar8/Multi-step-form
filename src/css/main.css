@@ -124,7 +124,7 @@ body {
 
 .container {
   position: relative;
-  margin: 5rem auto;
+  margin: 0 auto;
   height: 100%;
 }
 
@@ -520,6 +520,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 5rem auto;
     padding: 2rem;
     max-width: 1000px;
     width: 80%;
