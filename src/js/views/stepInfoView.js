@@ -6,7 +6,7 @@ class StepInfoView extends View {
     let isCorrectForm = false;
     const emailRegex =
       /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    const phoneRegex = /^(?:\+?\d{9,})$/;
+    const phoneRegex = /^(?:\+\d{1,2}\s?)?\d{1,3}(?:\s?\d{1,4}){0,2}$/;
     const name = document.querySelector('#name');
     const email = document.querySelector('#email');
     const phone = document.querySelector('#phone');

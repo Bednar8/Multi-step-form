@@ -8,11 +8,9 @@ class StepPlanView extends View {
   addHandlerChoosePlan(handler) {
     this._parentEl.addEventListener('click', function (e) {
       const plan = e.target.closest('.plan__item--option');
-
       if (!plan) return;
 
       const allPlans = document.querySelectorAll('.plan__item--option');
-
       allPlans.forEach(el => el.classList.remove('plan__item-active'));
       plan.classList.add('plan__item-active');
 
@@ -37,7 +35,6 @@ class StepPlanView extends View {
     });
   }
 
-  // Feature to do -> if change time then not to render whole step but only change text in plan option (it's neccesary becouse is animation on switch animation)
   changePlanValue() {
     const planBox = document.querySelector('.plan__box');
     if (!planBox) return;
@@ -57,7 +54,6 @@ class StepPlanView extends View {
     planBox.innerHTML = '';
     planBox.insertAdjacentHTML('afterbegin', markup);
   }
-  ///////////////////////////////////////
 
   getPlanOption() {
     const allPlans = Array.from(

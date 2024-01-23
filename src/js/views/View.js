@@ -3,7 +3,6 @@ export default class View {
   _stepContainer = document.querySelector('.step__container');
   _data;
 
-  // Add handler on click to next step
   addHandlerClickNextStep(handler) {
     this._parentEl.addEventListener('click', function (e) {
       const btnNext = document.querySelector('.btn--next');
@@ -11,6 +10,7 @@ export default class View {
       handler();
     });
   }
+
   addHandlerClickBackStep(handler) {
     this._parentEl.addEventListener('click', function (e) {
       const btnNext = document.querySelector('.btn--back');
@@ -19,7 +19,6 @@ export default class View {
     });
   }
 
-  // Render markup current step
   render(data) {
     this._data = data;
     const markup = this._generateMarkup();
