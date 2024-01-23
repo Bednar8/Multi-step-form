@@ -11,7 +11,7 @@ In this challenge, users progress through various steps of a form, entering simp
 ### Screenshot
 
 ![](./screenshot.jpg)
-![](/src/assets/img-readme/Step%20info.png)
+![](/src/assets/img-readme/Step%20info_Easy-Resize.com.jpg)
 ![](/src/assets/img-readme/Step%20plan.png)
 ![](/src/assets/img-readme/Step%20add-ons.png)
 ![](/src/assets/img-readme/Step%20summary.png)
