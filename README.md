@@ -10,12 +10,10 @@ In this challenge, users progress through various steps of a form, entering simp
 
 ### Screenshot
 
-![](/src/assets/img-readme/Step%20info_Easy-Resize.com.jpg)
-![](/src/assets/img-readme/Step%20plan.png)
-<img src="./src/assets/img-readme/Step add-ons.png" width="100" height="100">
-
-<!-- ![](/src/assets/img-readme/Step%20add-ons.png)
-![](/src/assets/img-readme/Step%20summary.png) -->
+<img src="./src/assets/img-readme/Step info.png" width="400">
+<img src="./src/assets/img-readme/Step plan.png" width="400">
+<img src="./src/assets/img-readme/Step add-ons.png" width="300">
+<img src="./src/assets/img-readme/Step summary.png.png" width="300">
 
 ### Links
 
